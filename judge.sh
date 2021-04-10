@@ -7,7 +7,7 @@ for f in $t_PATH/*/*/*.in
 do
     echo "${f}"
     $RPOGRAM_FILE < $f > tmp
-    ./diff.exe -c -b tmp ${f%.*}.ans
+    diff -c -b tmp ${f%.*}.ans
     if [ $? != 0 ]; then
         all_correct=false
         break
