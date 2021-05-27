@@ -7,7 +7,7 @@ for f in $t_PATH/*/*/*.in
 do
     echo "${f}"
     $RPOGRAM_FILE < $f > tmp
-    diff -c -b tmp ${f%.*}.ans
+    diff --side-by-side tmp ${f%.*}.ans
     if [ $? != 0 ]; then
         all_correct=false
         break
@@ -15,9 +15,9 @@ do
 done
 if [ $all_correct == true ]; then
     echo ""
-    echo ""
     echo "ALL PASS"
     echo ""
-    echo ""
 fi
+echo ""
+rm tmp
 read -p "Press ENTER to exit." enter
